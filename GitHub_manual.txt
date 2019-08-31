@@ -1,0 +1,141 @@
+----Stages
+--crveno je lokalno kod mene promjena
+--zeleno je dodano tj. pripremljeno za commit
+--commitovi su spremni za push na server
+
+--kloniraj repozitorij s GitHub
+git clone https://github.com/usernam/repo
+
+
+----add
+-- dodaj sve i ukljuci promjene renama ili moveanja
+git add -A
+--dodaj određeni file
+git add fajl.txt
+--dodaj sve fajlove unutar svih foldera od ove lokacije
+git add .
+--vrati natrag na crveno iz zelenog tj. makni iz add na lokalno
+git reser HEAD fajl.txt
+--ako oces i lokalnu promjenu discardati
+git checkout -- fajl.txt
+
+
+--commit s porukom u textalno editoru
+git commit
+--commit s porukom u konzoli
+git commit -m "poruka komita"
+--commit s porukom u konzoli i expressni add
+git commit -am "poruka komita s addom"
+
+
+--cherry pick commit
+git cherry
+
+----upload promjena na GitHub
+
+--refresh lokalni repozitorij
+git fetch
+--provjeri status repozitorija
+git status
+--povuci sve s GitHuba da imas lokalno sinkronizirano
+git pull origin master
+--povuci s githuba promjene koje nemas, a imas neke kod sebe
+git pull --rebase origin master
+--prebaci sve promjene na GitHub
+git push origin master
+
+--difftool usporedba lokalnog s addom (crveno i zeleno)
+git difftool master
+--difftool usporedba lokalnog s serverom github masterom
+git difftool master
+--difftool usporedba s kommitom
+git difftool HEAD
+--difftool usporedba adda s kommitom
+git difftool --staged HEAD
+--difftool usporedba lokalnog s serverom github masterom
+git difftool master origin/master
+
+
+
+----pauziraj promjene
+-- stashiraj ih, nakon ovoga nece biti vidljive promjene ali ce biti spremljene za kasniju upotrebu
+git stash
+-- ili stash s porukom kao komit
+git stash save "ZB - "
+--vrati natrag sve pauzirane promjene
+git stash apply
+--vrati natrag odredenu pauziranu promjenu rednog broja 1.
+git stash apply stash @{1}
+-- pokazi popis pauziranih promjena
+git stash list
+-- pokazi odredenu pauziranu promjenu rednog broja 1.
+git stash show stash @{1}
+--nakon sto si vratis pauzirane promjene, mozes obrisati s ovim zadnji save pauzirane promjene
+git stash drop
+-- dropaj odredeni stash npr #1
+git stash drop stash @{1}
+-- dropaj sve saveane stashove
+git stash clear
+----popis pracenih fajlova od gita
+git ls-files
+--pauziraj i nove fajlove koji jos nisu praceni od gita
+-- vrati pauzirane promjene i obriši stash save (apply+drop)
+git stash pop
+
+
+----Ignoriranje Datotka
+--napravi file s popisom ignoriranih datoteka
+Atom .gitignore
+--pisi liniju po liniju
+--*.log
+--folder/
+--specificna_datoteka.txt
+
+
+
+----novi branch
+--dobij popis brancheva i na kojem si
+git branch -a
+--napravi novi branch
+git branch newbranch
+--rename brancha
+git branch -m newbranch newbranchname
+--prebaci se na novi brancha
+git checkout newbranchname
+--prije merga se checkoutaj tj. prebaci na master branch
+git merge newbranchname - "poruka merga sto se radilo"
+--brisanje brancheva
+git branch -d newbranchname
+--napravi novi branch i prebaci se na njega (samo ako nema promjena tj. commita na masteru)
+git checkout -b title-change-new
+--merganje konflikata
+git mergetool
+
+
+
+----rebase - povuci s (xyz brancha)master u novi branch sve promjene
+git rebase xyz
+--zaustavi zbog konflikata
+git rebase --abort
+--mergaj brancheve
+git mergetool
+--mozda budes trebal prije nastavka git add za file koji je mergan prije
+--rebase nastavi
+git rebase xyz --continue
+
+
+----LOG - HISTORY
+git log
+--uređeno history
+git log --oneline --graph --decorate
+
+----KONFIGURIRANJE
+--lokacija fajla konfiguracije
+atom ~/.gitconfig
+-- slozi alias za hist
+git config --global alias.hist "log --all --graph --decorate --oneline"
+--slozi usera i email
+git config --global user.name "Zvonimir Bedi"
+git config --global user.email "email"
+-- popis svih konfiguracija
+git config --global --list
