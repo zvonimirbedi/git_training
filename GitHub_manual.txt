@@ -136,6 +136,6 @@ atom ~/.gitconfig
 git config --global alias.hist "log --all --graph --decorate --oneline"
 --slozi usera i email
 git config --global user.name "Zvonimir Bedi"
-git config --global user.email "email"
+git config --global user.email "zvonimirbedi@gmail.com"
 -- popis svih konfiguracija
 git config --global --list
