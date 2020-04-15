@@ -1,0 +1,12 @@
+git checkout [branch CR/AM]
+git pull
+git branch [NEW_BRANCH]
+git push origin [NEW_BRANCH]
+git checkout [NEW_BRANCH]
+git add
+git commit
+git push --set-upstream origin [NEW_BRANCH]
+
+
+-	for CR tickets -> Argentero Dario + Alberto Cipollina + Alessandro Abruzzo + Leonardo Dibitonto
+-	for AM tickets -> Oddera Fabrizio + Alberto Cipollina + Alessandro Abruzzo + Leonardo Dibitonto
